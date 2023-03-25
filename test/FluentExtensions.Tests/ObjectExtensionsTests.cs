@@ -31,9 +31,8 @@ public class ObjectExtensionsTests
     [Fact]
     public void IsIn_ValueIsNullAndArrayDoesNotContainNull_ReturnsFalse()
     {
-        object value = null;
+        object? value = null;
 
-        // ReSharper disable once ExpressionIsAlwaysNull
         var result = value.IsIn(new object());
 
         result.Should().BeFalse();
@@ -42,9 +41,8 @@ public class ObjectExtensionsTests
     [Fact]
     public void IsIn_ValueIsNullAndArrayContainsNull_ReturnsTrue()
     {
-        object value = null;
+        object? value = null;
 
-        // ReSharper disable once ExpressionIsAlwaysNull
         var result = value.IsIn(new object(), null);
 
         result.Should().BeTrue();
