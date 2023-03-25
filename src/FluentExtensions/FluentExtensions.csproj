@@ -1,7 +1,61 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Versions -->
+    <MajorVersion>2</MajorVersion>
+    <MinorVersion>0</MinorVersion>
+    <PatchVersion>0</PatchVersion>
+    <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion)</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+    <AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Assembly signing -->
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\FluentExtensions.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- NuGet packaging -->
+    <PackageId>FluentExtensions</PackageId>
+    <Authors>FluentExtensions contributors</Authors>
+    <Description>Fluent extensions.</Description>
+    <Copyright>Copyright (c) 2021-$([System.DateTime]::Now.ToString(yyyy)) FluentExtensions contributors.</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/pavbsu/fluentextensions</RepositoryUrl>
+    <PackageTags>extension;extensions;fluent;</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <!-- Source Link -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- Deterministic Builds -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Visible="False" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
 
 </Project>
